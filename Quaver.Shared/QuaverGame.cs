@@ -274,6 +274,9 @@ namespace Quaver.Shared
             WindowManager.ChangeBaseResolution(new Vector2(1920, 1080));
             Resources.AddStore(new DllResourceStore("Quaver.Resources.dll"));
 
+            // Set up localization (adds the Quaver.Shared language file store and applies the configured language).
+            Localization.Translator.Initialize();
+
             Graphics.IsFullScreen = ConfigManager.WindowFullScreen.Value;
             Window.IsBorderless = ConfigManager.WindowBorderless.Value;
             ChangeResolution();

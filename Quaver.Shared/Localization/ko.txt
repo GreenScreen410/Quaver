@@ -1,0 +1,8 @@
+[Strings]
+MainMenu_SinglePlayer=싱글 플레이
+MainMenu_Multiplayer=멀티플레이어
+MainMenu_Editor=에디터
+MainMenu_DownloadSongs=곡 다운로드
+MainMenu_SteamWorkshop=스팀 창작마당
+MainMenu_Options=설정
+MainMenu_QuitGame=게임 종료

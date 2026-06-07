@@ -1,0 +1,8 @@
+[Strings]
+MainMenu_SinglePlayer=Single Player
+MainMenu_Multiplayer=Multiplayer
+MainMenu_Editor=Editor
+MainMenu_DownloadSongs=Download Songs
+MainMenu_SteamWorkshop=Steam Workshop
+MainMenu_Options=Options
+MainMenu_QuitGame=Quit Game

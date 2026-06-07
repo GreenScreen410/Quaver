@@ -2,6 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Quaver.Shared.Assets;
+using Quaver.Shared.Graphics;
+using Quaver.Shared.Localization;
 using Quaver.Shared.Screens.Menu.UI.Jukebox;
 using Quaver.Shared.Skinning;
 using Wobble.Assets;
@@ -57,6 +59,25 @@ namespace Quaver.Shared.Screens.Main.UI.Nagivation
         }
 
         /// <summary>
+        ///     Localized variant: the label is bound to a translation key and updates live when the language changes.
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <param name="text"></param>
+        /// <param name="clickAction"></param>
+        public NavigationButton(Texture2D icon, TranslationKey text, EventHandler clickAction = null)
+            : base(DeselectedButton, clickAction)
+        {
+            Size = OriginalSize;
+
+            CreateIcon(icon);
+            CreateName(text);
+            CreateHoverEffect();
+
+            Hovered += (sender, args) => SkinManager.Skin?.SoundHover.CreateChannel().Play();
+            Clicked += (sender, args) => SkinManager.Skin?.SoundClick.CreateChannel().Play();
+        }
+
+        /// <summary>
         /// </summary>
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
@@ -79,6 +100,15 @@ namespace Quaver.Shared.Screens.Main.UI.Nagivation
 
         private void CreateName(string name) => Name = new SpriteTextPlus(FontManager.GetWobbleFont(Fonts.LatoBlack),
             name.ToUpper(), 22)
+        {
+            Parent = this,
+            Alignment = Alignment.MidLeft,
+            X = Icon.X + Icon.Width + 14,
+            Tint = SkinManager.Skin?.MainMenu?.NavigationButtonTextColor ?? Color.White
+        };
+
+        private void CreateName(TranslationKey key) => Name = new LocalizedSpriteTextPlus(FontManager.GetWobbleFont(Fonts.LatoBlack),
+            key, 22, s => s.ToUpper())
         {
             Parent = this,
             Alignment = Alignment.MidLeft,

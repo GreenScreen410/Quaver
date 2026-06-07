@@ -109,6 +109,11 @@ namespace Quaver.Shared.Config
         internal static Bindable<string> Username { get; private set; }
 
         /// <summary>
+        ///     The language code used for in-game text (e.g. "en", "ko"). Falls back to English.
+        /// </summary>
+        internal static Bindable<string> Language { get; private set; }
+
+        /// <summary>
         ///     The skin in the Skins directory that is loaded. Default is the only exception, as it'll be overrided.
         /// </summary>
         internal static Bindable<string> Skin { get; private set; }
@@ -1068,6 +1073,7 @@ namespace Quaver.Shared.Config
             SmoothAudioStart = ReadValue(@"SmoothAudioStart", false, data);
             NormaliseScrollVelocityByRatePercentage = ReadInt(@"NormaliseScrollVelocityByRatePercentage", 0, 0, 100, data);
             GlobalAudioOffset = ReadInt(@"GlobalAudioOffset", 0, -500, 500, data);
+            Language = ReadValue(@"Language", "en", data);
             Skin = ReadValue(@"Skin", "", data);
             DefaultSkin = ReadValue(@"DefaultSkin", DefaultSkins.Bar, data);
             DefaultEditorSkin = ReadValue<DefaultSkins?>(@"DefaultEditorSkin", null, data);

@@ -49,6 +49,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <!-- Localization language files, embedded so LocalizationManager can read them via the resource store -->
+    <None Remove="Localization/**/*.txt" />
+    <EmbeddedResource Include="Localization/**/*.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Emik.Rubbish" Version="1.1.0" />
     <PackageReference Include="DiscordRichPresence" Version="1.6.1.70" />
     <PackageReference Include="HoLLy.osu.DatabaseReader" Version="3.2.0" />

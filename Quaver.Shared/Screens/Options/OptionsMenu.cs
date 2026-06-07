@@ -304,6 +304,10 @@ namespace Quaver.Shared.Screens.Options
                 ),
                 new OptionsSection("Miscellaneous", UserInterface.OptionsMisc, new List<OptionsSubcategory>
                 {
+                    new OptionsSubcategory("Language", new List<OptionsItem>()
+                    {
+                        new OptionsItemLanguage(containerRect, "Language", ConfigManager.Language)
+                    }),
                     new OptionsSubcategory("Navigation & Maintenance", new List<OptionsItem>()
                     {
                         new OptionsItemOpenGameFolder(containerRect, "Open Game Folder"),
